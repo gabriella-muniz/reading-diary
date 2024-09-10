@@ -5,29 +5,23 @@
         <span class="text-white text-3xl font-font">Book Diary</span>
         <nav>
           <ul class="hidden md:flex space-x-6 font-font">
-            <router-link to="/">
-              <li>
-                <a
-                  class="text-white hover:text-gray-300 transition-colors duration-300"
-                >Início</a>
-              </li>
-            </router-link>
+            <li @click="closeMenu">
+              <router-link to="/">
+                <a class="text-white hover:text-gray-300 transition-colors duration-300">Início</a>
+              </router-link>
+            </li>
 
-            <router-link to="/MeusLidos">
-              <li>
-                <a
-                  class="text-white hover:text-gray-300 transition-colors duration-300"
-                >Meus Lidos</a>
-              </li>
-            </router-link>
+            <li @click="closeMenu">
+              <router-link to="/MeusLidos">
+                <a class="text-white hover:text-gray-300 transition-colors duration-300">Meus Lidos</a>
+              </router-link>
+            </li>
 
-            <router-link to="/Prox">
-              <li>
-                <a
-                  class="text-white hover:text-gray-300 transition-colors duration-300"
-                >Próximas Leituras</a>
-              </li>
-            </router-link>
+            <li @click="closeMenu">
+              <router-link to="/Prox">
+                <a class="text-white hover:text-gray-300 transition-colors duration-300">Próximas Leituras</a>
+              </router-link>
+            </li>
           </ul>
           <!-- Menu responsivo -->
           <div class="md:hidden">
@@ -64,6 +58,7 @@
           :to="item.href"
         >
           <div
+            @click="closeMenu"
             class="p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300"
           >
             <span class="block text-gray-600 text-lg">
@@ -89,6 +84,10 @@ export default {
       ],
     };
   },
+  methods: {
+    closeMenu() {
+      this.menuOpen = false;  // Fecha o menu ao clicar em um item
+    }
+  }
 };
 </script>
-
