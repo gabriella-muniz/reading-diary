@@ -1,8 +1,7 @@
-import { createRouter, createWebHistory } from 'vue-router'
-
+import { createRouter, createWebHashHistory } from 'vue-router';
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(),  // Certifique-se de que este caminho está correto
   routes: [
     {
       path: '/',
@@ -19,8 +18,7 @@ const router = createRouter({
       name: 'Proximas',
       component: () => import('../views/ProxLeituras.vue')
     },
-
   ]
-})
+});
 
-export default router
+export default router;

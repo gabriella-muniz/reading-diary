@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "homepage": "http://gabriella-muniz.github.io/reading-diary",
   "scripts": {
+     "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
@@ -21,6 +24,7 @@
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.23.0",
+    "gh-pages": "^6.1.1",
     "postcss": "^8.4.41",
     "prettier": "^3.2.5",
     "tailwindcss": "^3.4.10",

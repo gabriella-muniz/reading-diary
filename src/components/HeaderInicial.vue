@@ -5,11 +5,10 @@
         <span class="text-white text-3xl font-font">Book Diary</span>
         <nav>
           <ul class="hidden md:flex space-x-6 font-font">
-           
             <router-link to="/">
               <li>
                 <a
-                  class="text-white hover:text-gray-300 transition-colors duration-300 cursor-pointer"
+                  class="text-white hover:text-gray-300 transition-colors duration-300"
                 >Início</a>
               </li>
             </router-link>
@@ -17,7 +16,7 @@
             <router-link to="/MeusLidos">
               <li>
                 <a
-                  class="text-white hover:text-gray-300 transition-colors duration-300 cursor-pointer"
+                  class="text-white hover:text-gray-300 transition-colors duration-300"
                 >Meus Lidos</a>
               </li>
             </router-link>
@@ -25,12 +24,10 @@
             <router-link to="/Prox">
               <li>
                 <a
-                  class="text-white hover:text-gray-300 transition-colors duration-300 cursor-pointer"
+                  class="text-white hover:text-gray-300 transition-colors duration-300"
                 >Próximas Leituras</a>
               </li>
             </router-link>
-           
-           
           </ul>
           <!-- Menu responsivo -->
           <div class="md:hidden">
@@ -61,18 +58,19 @@
         v-if="menuOpen"
         class="md:hidden bg-gradient-to-r from-teal-500 to-blue-400 text-white p-4 space-y-2 mt-2 font-font"
       >
-        <div
+        <router-link
           v-for="(item, index) in menuItems"
           :key="index"
-          class="p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300"
+          :to="item.href"
         >
-          <a
-            :href="item.href"
-            class="block text-gray-600 text-lg cursor-pointer"
+          <div
+            class="p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300"
           >
-            {{ item.text }}
-          </a>
-        </div>
+            <span class="block text-gray-600 text-lg">
+              {{ item.text }}
+            </span>
+          </div>
+        </router-link>
       </div>
     </header>
   </div>
@@ -88,7 +86,6 @@ export default {
         { text: 'Início', href: '/' },
         { text: 'Meus Lidos', href: '/MeusLidos' },
         { text: 'Próximas Leituras', href: '/Prox' }
-        
       ],
     };
   },
