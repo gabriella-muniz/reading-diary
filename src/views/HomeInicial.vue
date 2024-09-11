@@ -7,7 +7,7 @@
     </section>
 
     <!-- Botão para adicionar livro -->
-    <section class="py-12 text-center">
+    <section class="py-5 text-center">
       <button @click="openModal" class="bg-gradient-to-r from-teal-600 to-blue-500 text-white px-8 py-4 rounded-md shadow-md hover:bg-green-700 transition-colors">
         Adicionar Livro
       </button>
@@ -26,10 +26,10 @@
     </div>
 
     <!-- Livros Lidos Recentemente -->
-    <section class="py-5 px-12">
-      <h2 class="text-4xl font-bold mb-20 text-center">Livros Recentemente Lidos</h2>
+    <section class="py-5 px-5">
+      <h2 class="text-4xl font-bold mb-10 text-center font-font">Livros Recentemente Lidos</h2>
       <div v-if="recentBooks.length === 0" class="text-center text-gray-600 mb-5">
-        <p>Você ainda não adicionou nenhum livro.</p>
+        <p class="font-font2">Você ainda não adicionou nenhum livro.</p>
       </div>
       <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-12">
         <div v-for="book in recentBooksToShow" :key="book.id" class="bg-gray-200 p-8 rounded-xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 ease-in-out">
@@ -42,14 +42,14 @@
 
     <!-- Meta de Leitura -->
     <section class="py-20 px-12 bg-gray-800 shadow-lg">
-      <h2 class="text-4xl font-bold mb-12 text-center text-white">Minha Meta de Leitura</h2>
+      <h2 class="text-4xl font-bold mb-12 text-center text-white font-font">Minha Meta de Leitura</h2>
       <div class="text-center">
-        <p class="text-2xl mb-6 text-white">Meta de leitura de 2024: 50 livros</p>
+        <p class="text-2xl mb-6 text-white font-font2">Meta de leitura de 2024: 50 livros</p>
         <div class="w-4/5 md:w-3/5 mx-auto bg-gray-700 rounded-full h-12 relative">
-          <div class="bg-blue-600 h-full rounded-full" :style="{ width: progress + '%' }"></div>
+          <div class="bg-blue-600 h-full rounded-full font-font2" :style="{ width: progress + '%' }"></div>
           <span class="absolute inset-0 flex items-center justify-center text-sm font-semibold text-gray-100">{{ booksRead }} livros lidos</span>
         </div>
-        <p class="mt-4 text-gray-400">{{ booksRead }} livros lidos até agora!</p>
+        <p class="mt-4 text-gray-400 font-font2">{{ booksRead }} livros lidos até agora!</p>
       </div>
     </section>
 
