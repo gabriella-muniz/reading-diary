@@ -22,6 +22,8 @@
                 <a class="text-white hover:text-gray-300 transition-colors duration-300">Próximas Leituras</a>
               </router-link>
             </li>
+
+           
           </ul>
           <!-- Menu responsivo -->
           <div class="md:hidden">

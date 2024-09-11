@@ -1,18 +1,25 @@
 <template>
-  <div class="min-h-screen bg-gray-100 flex flex-col items-center py-20 px-4  ">
+  <div class="min-h-screen bg-gray-100 flex flex-col items-center py-20 px-4">
     <!-- Botão para abrir o modal -->
     <div class="w-full max-w-md mb-2 flex justify-center">
       <button
         @click="openModal"
-        class="bg-gradient-to-r from-teal-600 to-blue-500 text-white px-4 py-2 rounded-md shadow-md hover:from-teal-500 hover:to-blue-300 transition-colors"
+        class="bg-gradient-to-r from-teal-600 to-blue-500 text-white px-8 py-4 rounded-md shadow-md hover:from-teal-500 hover:to-blue-300 transition-colors"
       >
         Adicionar Livro
       </button>
     </div>
 
-    <!-- Lista de Livros -->
-    <section class="py-16 px-8">
+    <!-- Mensagem de Sucesso -->
+    <div v-if="showSuccessMessage" class="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-md shadow-md">
+      Livro salvo com sucesso!
+    </div>
+
+    <!-- Lista de Livros Lidos -->
+    <section class="py-4 px-8">
+      <h2 class="text-2xl font-semibold font-font2 text-center mb-8">Seus Livros Lidos</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
         <div
           v-for="(book, index) in books"
           :key="index"
@@ -73,6 +80,7 @@ export default {
       isModalOpen: false,
       currentBook: {},
       editingIndex: null,
+      showSuccessMessage: false,
     };
   },
   created() {
@@ -88,7 +96,11 @@ export default {
       this.isModalOpen = false;
     },
     addBook(book) {
-      this.books.push(book);
+      this.books.unshift(book); // Adiciona o livro no início da lista
+      this.showSuccessMessage = true; // Exibe a mensagem de sucesso
+      setTimeout(() => {
+        this.showSuccessMessage = false; // Oculta a mensagem após 3 segundos
+      }, 3000);
       this.saveBooksToLocalStorage();
     },
     editBook(index) {
@@ -98,9 +110,9 @@ export default {
     },
     handleBookSubmit(book, index) {
       if (index !== null) {
-        this.books.splice(index, 1, book);
+        this.books.splice(index, 1, book); // Atualiza o livro existente
       } else {
-        this.addBook(book);
+        this.addBook(book); // Adiciona o novo livro no início
       }
       this.saveBooksToLocalStorage();
       this.closeModal();
@@ -121,3 +133,8 @@ export default {
   },
 };
 </script>
+
+
+
+
+

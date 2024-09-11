@@ -4,7 +4,7 @@
     <div class="w-full max-w-md mb-6 flex justify-center">
       <button
         @click="openModal"
-        class="bg-gradient-to-r from-teal-600 to-blue-500 text-white px-4 py-2 rounded-md shadow-md hover:from-teal-500 hover:to-blue-300 transition-colors font-font2"
+        class="bg-gradient-to-r from-teal-600 to-blue-500 text-white px-8 py-4 rounded-md shadow-md hover:from-teal-500 hover:to-blue-300 transition-colors font-font2"
       >
         Adicionar Livro para Ler
       </button>
