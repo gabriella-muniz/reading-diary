@@ -1,10 +1,10 @@
 <template>
-  <div class="min-h-screen bg-gray-100 flex flex-col items-center py-10 px-4">
+  <div class="min-h-screen bg-gray-100 flex flex-col items-center py-20 px-4">
     <!-- Botão para abrir o modal -->
-    <div class="w-full max-w-md mb-4 flex justify-center">
+    <div class="w-full max-w-md mb-2 flex justify-center">
       <button
         @click="openModal"
-        class="bg-black text-[#8DD9BF] py-3 px-6 text-lg sm:text-xl uppercase tracking-wider font-bold rounded-lg shadow-md font-font"
+        class="bg-black text-[#8DD9BF] py-3 px-6 text-lg uppercase tracking-wider font-bold rounded-lg shadow-md font-font"
       >
         Adicionar Livro
       </button>
@@ -16,22 +16,23 @@
     </div>
 
     <!-- Lista de Livros Lidos -->
-    <section class="py-4 px-4 sm:px-8">
-      <h2 class="text-xl sm:text-2xl font-semibold font-font2 text-center mb-6">Seus Livros Lidos</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <section class="py-4 px-8">
+      <h2 class="text-2xl font-semibold font-font2 text-center mb-8">Seus Livros Lidos</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <!-- Adicione um item mínimo para os itens da grid -->
         <div
           v-for="(book, index) in books"
           :key="index"
-          class="bg-white p-4 sm:p-6 shadow-md rounded-md flex flex-col min-w-[400px] max-w-[300px]" >
+          class="bg-white p-6 shadow-md rounded-md flex flex-col">
         
           <img
             v-if="book.image"
             :src="book.image"
             alt="Capa do Livro"
-            class="w-full h-48 sm:h-64 object-cover rounded-md mb-4"
+            class="w-full h-64 object-cover rounded-md mb-4"
           />
           <div class="flex-1 text-left">
-            <h3 class="text-xl sm:text-2xl font-semibold mb-2 text-black">{{ book.name }}</h3>
+            <h3 class="text-2xl font-semibold mb-2 text-black">{{ book.name }}</h3>
             <p class="text-gray-600 mb-2 break-words">{{ book.review }}</p>
             <p class="text-gray-500 font-medium">Nota: {{ book.rating }}/5</p>
           </div>
@@ -65,7 +66,6 @@
     </section>
   </div>
 </template>
-
 
 <script>
 import BookModal from '../components/BookModal.vue';
