@@ -5,6 +5,7 @@
 
     <!-- Área principal para conteúdo da rota -->
     <main class="  bg-white">
+      
       <RouterView />
     </main>
   </div>
@@ -12,6 +13,7 @@
 
 <script setup>
 import HeaderInicial from './components/HeaderInicial.vue';
+
 </script>
 
 <style scoped>

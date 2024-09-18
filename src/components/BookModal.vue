@@ -47,7 +47,7 @@
           <div class="flex justify-end space-x-2 mt-4">
             <button
               @click="submit"
-              class="bg-blue-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-600 transition-colors"
+              class="bg-[#8DD9BF] text-black px-4 py-2 rounded-md shadow-md hover:bg-green-300 transition-colors"
             >
               {{ editingIndex !== null ? 'Salvar Alterações' : 'Adicionar Livro' }}
             </button>

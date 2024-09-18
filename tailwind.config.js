@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      'font': ["Nerko One", 'cursive'],
+      'font': ["Lilita One", 'sans-serif'],
       'font2': ["Quicksand", 'sans-serif']
     },
   },

@@ -1,25 +1,34 @@
 <template>
   <div>
-    <header class="bg-gradient-to-r from-teal-600 to-blue-500 text-white p-4 shadow-md font-font fixed top-0 left-0 right-0 z-50">
+    <header class="bg-[#8DD9BF] text-white p-4 shadow-md font-font fixed top-0 left-0 right-0 z-50">
       <div class="container mx-auto flex justify-between items-center">
-        <span class="text-white text-3xl font-font">Book Diary</span>
+        <router-link to="/">
+          <span class="text-black text-3xl font-font">Reading Diary</span>
+        </router-link>
         <nav>
           <ul class="hidden md:flex space-x-6 font-font">
             <li @click="closeMenu">
               <router-link to="/">
-                <a class="text-white hover:text-gray-300 transition-colors duration-300">Início</a>
+                <a class="text-black hover:text-gray-700 transition-colors duration-300">Início</a>
+              </router-link>
+            </li>
+
+            <li @click="closeMenu">
+              <router-link to="/MinhaRede">
+                <a class="text-black hover:text-gray-700 transition-colors duration-300">Sua Rede</a>
               </router-link>
             </li>
 
             <li @click="closeMenu">
               <router-link to="/MeusLidos">
-                <a class="text-white hover:text-gray-300 transition-colors duration-300">Meus Lidos</a>
+                <a class="text-black hover:text-gray-700 transition-colors duration-300">Meus Lidos</a>
               </router-link>
             </li>
 
+
             <li @click="closeMenu">
               <router-link to="/Prox">
-                <a class="text-white hover:text-gray-300 transition-colors duration-300">Próximas Leituras</a>
+                <a class="text-black hover:text-gray-700 transition-colors duration-300">Próximas Leituras</a>
               </router-link>
             </li>
 
@@ -29,7 +38,7 @@
           <div class="md:hidden">
             <button
               @click="menuOpen = !menuOpen"
-              class="text-white focus:outline-none"
+              class="text-black focus:outline-none"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +61,7 @@
       <!-- Menu mobile -->
       <div
         v-if="menuOpen"
-        class="md:hidden bg-gradient-to-r from-teal-500 to-blue-400 text-white p-4 space-y-2 mt-2 font-font"
+        class="md:hidden bg-[#8DD9BF] text-white p-4 space-y-2 mt-2 font-font"
       >
         <router-link
           v-for="(item, index) in menuItems"
@@ -63,7 +72,7 @@
             @click="closeMenu"
             class="p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300"
           >
-            <span class="block text-gray-600 text-lg">
+            <span class="block text-black text-lg">
               {{ item.text }}
             </span>
           </div>
@@ -81,6 +90,7 @@ export default {
       menuOpen: false,
       menuItems: [
         { text: 'Início', href: '/' },
+        { text: 'Sua Rede', href: '/MinhaRede' },
         { text: 'Meus Lidos', href: '/MeusLidos' },
         { text: 'Próximas Leituras', href: '/Prox' }
       ],

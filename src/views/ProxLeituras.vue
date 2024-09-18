@@ -1,23 +1,23 @@
 <template>
   <div class="min-h-screen bg-gray-100 flex flex-col items-center py-20 px-4">
     <!-- Botão para abrir o modal -->
-    <div class="w-full max-w-md mb-6 flex justify-center">
+    <div class="w-full max-w-md mb-2 flex justify-center">
       <button
         @click="openModal"
-        class="bg-gradient-to-r from-teal-600 to-blue-500 text-white px-8 py-4 rounded-md shadow-md hover:from-teal-500 hover:to-blue-300 transition-colors font-font2"
+        class="bg-black text-[#8DD9BF] py-3 px-6 text-lg uppercase tracking-wider font-bold rounded-lg shadow-md font-font"
       >
         Adicionar Livro para Ler
       </button>
     </div>
 
     <!-- Seção de Próximas Leituras -->
-    <section class="py-15 px-8">
+    <section class="py-4 px-8">
       <h2 class="text-2xl font-semibold mb-4 font-font2 text-center">Próximas Leituras</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div
           v-for="(book, index) in futureReads"
           :key="index"
-          class="bg-white p-6 shadow-md rounded-md flex flex-col"
+          class="bg-white p-6 shadow-md rounded-md flex flex-col min-w-[400px] max-w-[300px]"
         >
           <img
             v-if="book.image"

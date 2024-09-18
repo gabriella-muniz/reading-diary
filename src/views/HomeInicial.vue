@@ -1,14 +1,12 @@
 <template>
   <div class="bg-gray-100 min-h-screen text-black py-12 relative">
     <!-- Banner de Boas-Vindas -->
-    <section class="bg-gradient-to-r from-teal-600 to-blue-500 text-white py-24 px-12 text-center shadow-lg">
+    <section class="bg-[#8DD9BF] text-black py-24 px-12 text-center shadow-lg">
       <h1 class="text-6xl font-extrabold mb-8 font-font">Bem-vindo ao Seu Diário de Leituras</h1>
       <RotatingText />
-    </section>
 
-    <!-- Botão para adicionar livro -->
-    <section class="py-5 text-center">
-      <button @click="openModal" class="bg-gradient-to-r from-teal-600 to-blue-500 text-white px-8 py-4 rounded-md shadow-md hover:bg-green-700 transition-colors">
+      <!-- Botão para adicionar livro -->
+      <button @click="openModal" class="bg-black text-[#F4F6F9] py-[1rem] sm:py-[1.2rem] px-[2.5rem] sm:px-[3.5rem] text-[0.9rem] sm:text-[1rem] uppercase tracking-wider font-bold rounded-lg shadow-md transition-transform transform hover:translate-y-[-5px] font-font mt-8">
         Adicionar Livro
       </button>
     </section>
@@ -41,15 +39,28 @@
     </section>
 
     <!-- Meta de Leitura -->
-    <section class="py-20 px-12 bg-gray-800 shadow-lg">
-      <h2 class="text-4xl font-bold mb-12 text-center text-white font-font">Minha Meta de Leitura</h2>
+    <section class="py-20 px-12 bg-[#8DD9BF] shadow-lg">
+      <h2 class="text-4xl font-bold mb-12 text-center text-black font-font">Minha Meta de Leitura</h2>
       <div class="text-center">
-        <p class="text-2xl mb-6 text-white font-font2">Meta de leitura de 2024: 50 livros</p>
-        <div class="w-4/5 md:w-3/5 mx-auto bg-gray-700 rounded-full h-12 relative">
-          <div class="bg-blue-600 h-full rounded-full font-font2" :style="{ width: progress + '%' }"></div>
+        <!-- Formulário para definir a meta de leitura -->
+        <div class="mb-6">
+          <input 
+            v-model="newReadingGoal" 
+            type="number" 
+            placeholder="Defina sua meta em 2024 " 
+            class="py-3 px-4 text-lg rounded-lg border border-gray-300 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out"
+          />
+        </div>
+        <button @click="setReadingGoal" class="bg-black text-[#F4F6F9] py-3 px-6 text-lg uppercase tracking-wider font-bold rounded-lg shadow-md font-font mb-4">
+          Definir Meta
+        </button>
+
+        <p v-if="readingGoal" class="text-2xl mt-6 mb-6 text-black font-font2">Meta de leitura de 2024: {{ readingGoal }} livros</p>
+        <div class="w-full max-w-md mx-auto bg-gray-700 rounded-full h-12 relative">
+          <div class="bg-blue-500 h-full rounded-full font-font2" :style="{ width: progress + '%' }"></div>
           <span class="absolute inset-0 flex items-center justify-center text-sm font-semibold text-gray-100">{{ booksRead }} livros lidos</span>
         </div>
-        <p class="mt-4 text-gray-400 font-font2">{{ booksRead }} livros lidos até agora!</p>
+        <p class="mt-4 text-black font-font2">{{ booksRead }} livros lidos até agora!</p>
       </div>
     </section>
 
@@ -78,6 +89,8 @@ export default {
       progress: 0,
       isModalOpen: false,
       showSuccessMessage: false,
+      readingGoal: null,
+      newReadingGoal: null,
     };
   },
   computed: {
@@ -87,6 +100,7 @@ export default {
   },
   created() {
     this.loadBooksFromLocalStorage();
+    this.loadReadingGoalFromLocalStorage();
   },
   methods: {
     openModal() {
@@ -98,7 +112,7 @@ export default {
     addBook(newBook) {
       this.recentBooks.push(newBook);
       this.booksRead = this.recentBooks.length;
-      this.progress = (this.booksRead / 50) * 100;
+      this.updateProgress();
       this.saveBooksToLocalStorage();
       this.closeModal();
       this.showSuccess();
@@ -114,12 +128,37 @@ export default {
       if (savedBooks) {
         this.recentBooks = JSON.parse(savedBooks);
         this.booksRead = this.recentBooks.length;
-        this.progress = (this.booksRead / 50) * 100;
+        this.updateProgress();
       }
     },
     saveBooksToLocalStorage() {
       localStorage.setItem('books', JSON.stringify(this.recentBooks));
     },
+    updateProgress() {
+      if (this.readingGoal) {
+        this.progress = (this.booksRead / this.readingGoal) * 100;
+      }
+    },
+    setReadingGoal() {
+      if (this.newReadingGoal > 0) {
+        this.readingGoal = this.newReadingGoal;
+        this.saveReadingGoalToLocalStorage();
+        this.updateProgress();
+      }
+    },
+    loadReadingGoalFromLocalStorage() {
+      const savedGoal = localStorage.getItem('readingGoal');
+      if (savedGoal) {
+        this.readingGoal = JSON.parse(savedGoal);
+        this.updateProgress();
+      }
+    },
+    saveReadingGoalToLocalStorage() {
+      localStorage.setItem('readingGoal', JSON.stringify(this.readingGoal));
+    },
   },
 };
 </script>
+
+
+
