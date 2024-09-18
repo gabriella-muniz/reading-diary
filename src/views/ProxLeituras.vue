@@ -13,7 +13,7 @@
     <!-- Seção de Próximas Leituras -->
     <section class="py-4 px-8">
       <h2 class="text-2xl font-semibold mb-4 font-font2 text-center">Próximas Leituras</h2>
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div
           v-for="(book, index) in futureReads"
           :key="index"
@@ -27,7 +27,6 @@
           />
           <div class="flex-1 text-left">
             <h3 class="text-xl font-semibold mb-2">{{ book.name }}</h3>
-            <p class="text-gray-600 mb-2 break-words">{{ book.description }}</p>
           </div>
           <div class="mt-4 flex space-x-2">
             <button

@@ -19,7 +19,7 @@
     <section class="py-4 px-8">
       <h2 class="text-2xl font-semibold font-font2 text-center mb-8">Seus Livros Lidos</h2>
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-        <!-- Adicione um item mínimo para os itens da grid -->
+       
         <div
           v-for="(book, index) in books"
           :key="index"
