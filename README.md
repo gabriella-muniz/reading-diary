@@ -1,10 +1,12 @@
-# Diário Online de Leituras 📚
+# Reading Diary 📚
 
 ## Descrição
 
 O Diário Online de Leituras é um projeto desenvolvido para ajudar os usuários a registrar e acompanhar suas leituras de forma prática e intuitiva. Com este aplicativo, você pode adicionar livros que já leu, registrar suas opiniões sobre eles e planejar suas próximas leituras. A aplicação é armazenada localmente no navegador, garantindo que seus dados sejam mantidos no dispositivo que você está usando.
 
-![localhost_5173_reading-diary_ (4)](https://github.com/user-attachments/assets/797a7ad2-9e02-4dbb-bdb5-7055bb391f81)
+![localhost_5173_reading-diary_ (5)](https://github.com/user-attachments/assets/de1511a8-1c34-40b0-a27c-483c790cfdd3)
+
+![localhost_5173_reading-diary_ (9)](https://github.com/user-attachments/assets/ba30bc5b-e6b5-4213-a469-4d9feee9ec9a)
 
 ## Tecnologias Utilizadas
 
